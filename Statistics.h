@@ -82,7 +82,7 @@ class Statistics {
       else
         mCurrNumSamples++; // increment the current number
       mTotal += val;
-      mRefVariance += val*val; // add the square of val (referenced to zero)
+      mRefVariance += sqr(val); // add the square of val (referenced to zero)
       if (val > mMax)
         mMax = val;
       if (val < mMin)
@@ -91,7 +91,7 @@ class Statistics {
 
     float mean() const { return mTotal / mCurrNumSamples; }
     float variance() const { return (mRefVariance - (mCurrNumSamples * sqr(mean()))) / mCurrNumSamples; }
-    float stdDeviation() const { return sqrt(variance()); }
+    float stdDeviation() const { return sqrt(abs(variance())); }
     float maxVal() const { return mMax; }
     float minVal() const { return mMin; }
 
@@ -110,4 +110,3 @@ class Statistics {
 };
 
 #endif // #define statistics_h
-

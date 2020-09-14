@@ -22,46 +22,63 @@ over 200 bytes of SRAM in overhead.
 
 **Construction & Configuration**
 
-Statistics(numSamples) - specify the number of samples to be collected
+```C++
+// specify the number of samples to be collected
+Statistics(numSamples)
 
-void setNewSampleSize(numSamples) - change the sample size (will reset any data collected)
+// change the sample size (will reset any data collected)
+void setNewSampleSize(numSamples)
 
-void reset() - reset the collected data
-
+// reset the collected data
+void reset()
+```
 **Adding data**
 
-void addData(val) - add a data point to the collection
+```C++
+// add a data point to the collection
+void addData(val)
+```
 
 **Data Analysis**
 
-[type] mean() - the arthemetic mean of the data collected
+```C++
+// the arthemetic mean of the data collected
+Type mean()
 
-[type] variance() - the variance of the data
+// the variance of the data
+Type variance()
 
-[type] stdDeviation() - the standard deviation (NOT available in the integer version)
+// the standard deviation 
+// !! NOT available in the integer version !!
+Type stdDeviation()
 
-[type] maxVal() - the maximum data point
+// the maximum data point
+Type maxVal()
 
-[type] minVal() - the minimum data point
+// the minimum data point
+Type minVal()
+```
 
 ## Usage example
 
-    #include <Statistics.h>
+```C++
+#include <Statistics.h>
 
-    Statistics stats(10);
-    
-    void setup()
-    {
-      Serial.begin(9600);
-    }
-    
-    void loop()
-    {
-      int data = analogRead(A0);
-      stats.addData(data);
-      
-      Serial.print("Mean: ");
-      Serial.print(stats.mean());
-      Serial.print(" Std Dev: ");
-      Serial.println(stats.stdDeviation());
-    }
+Statistics stats(10);
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int data = analogRead(A0);
+  stats.addData(data);
+  
+  Serial.print("Mean: ");
+  Serial.print(stats.mean());
+  Serial.print(" Std Dev: ");
+  Serial.println(stats.stdDeviation());
+}
+```
