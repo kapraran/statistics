@@ -91,7 +91,7 @@ class Statistics {
 
     float mean() const { return mTotal / mCurrNumSamples; }
     float variance() const { return (mRefVariance - (mCurrNumSamples * sqr(mean()))) / mCurrNumSamples; }
-    float stdDeviation() const { return sqrt(abs(variance())); }
+    float stdDeviation() const { return sqrt(fabs(variance())); }
     float maxVal() const { return mMax; }
     float minVal() const { return mMin; }
 
